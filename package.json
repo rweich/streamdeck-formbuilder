@@ -1,0 +1,97 @@
+{
+  "name": "@rweich/streamdeck-formbuilder",
+  "version": "0.0.0-development",
+  "author": "rweich",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "ci": "yarn type-check && yarn lint && yarn lint-tests && yarn test",
+    "clean": "rimraf ./dist/*",
+    "build": "yarn clean && ttsc -p tsconfig.build.json",
+    "lint": "eslint 'src/**/*.ts' 'test/**/*.ts'",
+    "prepare": "husky install",
+    "type-check": "tsc --noEmit",
+    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\"}' mocha",
+    "test-coverage": "nyc yarn test"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "repository": "git@github.com:rweich/streamdeck-formbuilder.git",
+  "bugs": "https://github.com/rweich/streamdeck-formbuilder/issues",
+  "keywords": [
+    "streamdeck",
+    "elgato",
+    "typescript",
+    "sdk"
+  ],
+  "files": [
+    "README.md",
+    "dist/**/*"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "@rweich"
+  },
+  "lint-staged": {
+    "{src,test}/**/*.ts": [
+      "prettier --write",
+      "eslint --quiet --fix"
+    ]
+  },
+  "prettier": "@rweich/prettier-config",
+  "nyc": {
+    "extends": "@istanbuljs/nyc-config-typescript",
+    "all": true,
+    "include": [
+      "src/**/*.ts"
+    ],
+    "reporter": [
+      "text",
+      "lcov",
+      "json"
+    ]
+  },
+  "release": {
+    "extends": "@rweich/semantic-release-config",
+    "branches": "main"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "@istanbuljs/nyc-config-typescript": "^1.0.1",
+    "@rweich/eslint-config": "^1.1.2",
+    "@rweich/prettier-config": "^1.0.2",
+    "@rweich/semantic-release-config": "^1.1.3",
+    "@types/chai": "^4.2.21",
+    "@types/jsdom": "^16.2.13",
+    "@types/mocha": "^9.0.0",
+    "chai": "^4.3.4",
+    "esm": "^3.2.25",
+    "husky": "^7.0.1",
+    "jsdom": "^16.7.0",
+    "jsdom-global": "^3.0.2",
+    "lint-staged": "^11.1.2",
+    "mocha": "^9.0.3",
+    "nyc": "^15.1.0",
+    "rimraf": "^3.0.2",
+    "semantic-release": "^17.4.4",
+    "source-map-support": "^0.5.19",
+    "ts-node": "^10.1.0",
+    "ttypescript": "^1.5.12",
+    "typescript": "^4.3.5",
+    "typescript-transform-paths": "^3.2.1"
+  },
+  "dependencies": {
+    "eventemitter3": "^4.0.7",
+    "ts-type-guards": "^0.7.0"
+  }
+}
