@@ -1,3 +1,5 @@
+import '../assets/css/sdpi.css';
+
 import AbstractElement from './elements/AbstractElement';
 import Dropdown from './elements/Dropdown';
 import ElementGroupInterface from './ElementGroupInterface';
