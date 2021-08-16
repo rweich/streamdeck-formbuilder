@@ -6,8 +6,8 @@
   "require": [
     "ts-node/register/transpile-only",
     "tsconfig-paths/register",
-    "esm",
     "source-map-support/register",
-    "jsdom-global/register"
+    "jsdom-global/register",
+    "ignore-styles"
   ]
 }
