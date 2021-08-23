@@ -2,7 +2,13 @@ import AbstractElement from './AbstractElement';
 import { is } from 'ts-type-guards';
 
 export default class Input extends AbstractElement {
+  private placeholder = '';
   private input: HTMLInputElement | undefined;
+
+  public setPlaceholder(placeholder: string): this {
+    this.placeholder = placeholder;
+    return this;
+  }
 
   protected getInput(): HTMLElement {
     if (!this.input) {

@@ -1,11 +1,10 @@
 import ElementInterface from '../ElementInterface';
 import EventEmitter from 'eventemitter3';
-import { EventType } from '../EventType';
+import { EventType } from '@/EventType';
 import { ValueType } from './ValueType';
 import { is } from 'ts-type-guards';
 
 export default abstract class AbstractElement implements ElementInterface {
-  protected placeholder = '';
   private readonly htmlContainer: HTMLElement;
   private label = '';
   private eventEmitter = new EventEmitter<EventType>();
@@ -42,12 +41,6 @@ export default abstract class AbstractElement implements ElementInterface {
 
   public setLabel(label: string): this {
     this.label = label;
-    return this;
-  }
-
-  // TODO: move into Input? not all elements can use this
-  public setPlaceholder(placeholder: string): this {
-    this.placeholder = placeholder;
     return this;
   }
 
