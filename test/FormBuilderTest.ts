@@ -108,7 +108,7 @@ describe('FormBuilder', () => {
       });
     });
   });
-  describe('addHtml add the elements to the final html', () => {
+  describe('addXX methods add the elements to the final html', () => {
     describe('addHtml with Details', () => {
       it('should add details', () => {
         const builder = new FormBuilder({ a: '1' });
@@ -116,6 +116,19 @@ describe('FormBuilder', () => {
         const htmlElement = document.createElement('div');
         builder.appendTo(htmlElement);
         expect(htmlElement.innerHTML).to.contain('<details><h4>a headline</h4></details>');
+      });
+    });
+    describe('addHtmlElement', () => {
+      it('should add the passed element', () => {
+        const builder = new FormBuilder({ a: '1' });
+        const element = document.createElement('p');
+        element.textContent = 'foobar';
+        builder.addHtmlElement(element);
+        const htmlElement = document.createElement('div');
+        builder.appendTo(htmlElement);
+        const result = htmlElement.querySelector('p');
+        expect(result?.nodeName).to.equal('P');
+        expect(result?.textContent).to.equal('foobar');
       });
     });
   });

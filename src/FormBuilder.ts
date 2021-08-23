@@ -72,7 +72,6 @@ export default class FormBuilder<T extends FormDataType> {
     this.elementBag.push(element);
   }
 
-  // TODO: add tests
   public addHtmlElement(element: HTMLElement): void {
     this.elementBag.push(new HtmlElement(element));
   }
