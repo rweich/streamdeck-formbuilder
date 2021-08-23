@@ -58,7 +58,7 @@ export default abstract class AbstractElement implements ElementInterface {
     return this;
   }
 
-  public on<K extends keyof EventType>(eventname: K, callback: EventType[K]): void {
+  public on<K extends keyof EventType>(eventname: K, callback: EventEmitter.EventListener<EventType, K>): void {
     this.eventEmitter.on(eventname, callback);
   }
 

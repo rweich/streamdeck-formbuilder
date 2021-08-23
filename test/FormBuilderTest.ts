@@ -1,5 +1,6 @@
 import 'mocha';
 
+import Details from '@/elements/Details';
 import Dropdown from '@/elements/Dropdown';
 import FormBuilder from '@/FormBuilder';
 import Input from '@/elements/Input';
@@ -54,6 +55,21 @@ describe('FormBuilder', () => {
       expect(inputs[0].value).to.equal('1');
       expect(inputs[1].value).to.equal('2');
     });
+    it('should append the elements in the order they were added to the builder', () => {
+      const builder = new FormBuilder({ a: '1', b: '2' });
+      builder.addElement('a', builder.createInput());
+      builder.addHtml(new Details().addHeadline('foo'));
+      builder.addElement('b', builder.createInput());
+      builder.addHtml(new Details().addHeadline('bar'));
+      const dom = new JSDOM();
+      builder.appendTo(dom.window.document.body);
+      const childs = dom.window.document.body.children;
+      expect(childs).to.be.lengthOf(4);
+      expect(childs[0].querySelector('input')?.value).to.equal('1');
+      expect(childs[1].innerHTML).to.contain('foo');
+      expect(childs[2].querySelector('input')?.value).to.equal('2');
+      expect(childs[3].innerHTML).to.contain('bar');
+    });
   });
   describe('on', () => {
     it('should emit the change-settings event if one value changed', (done) => {
@@ -69,16 +85,38 @@ describe('FormBuilder', () => {
       inputs[0].dispatchEvent(new Event('input'));
     });
   });
-  describe('createInput', () => {
-    it('should return an input element', () => {
-      const builder = new FormBuilder({ a: '1' });
-      expect(is(Input)(builder.createInput())).to.be.true;
+  describe('create.. methods return the correct instances', () => {
+    describe('createInput', () => {
+      it('should return an input element', () => {
+        const builder = new FormBuilder({ a: '1' });
+        expect(is(Input)(builder.createInput())).to.be.true;
+      });
+    });
+    describe('createDropdown', () => {
+      it('should return an dropdown element', () => {
+        const builder = new FormBuilder({ a: '1' });
+        expect(is(Dropdown)(builder.createDropdown())).to.be.true;
+      });
+    });
+    describe('createDetails', () => {
+      it('should return an details element', () => {
+        const builder = new FormBuilder({ a: '1' });
+        expect(is(Details)(builder.createDetails())).to.be.true;
+        builder.addHtml(builder.createDetails());
+        const htmlElement = document.createElement('div');
+        builder.appendTo(htmlElement);
+      });
     });
   });
-  describe('createDropdown', () => {
-    it('should return an dropdown element', () => {
-      const builder = new FormBuilder({ a: '1' });
-      expect(is(Dropdown)(builder.createDropdown())).to.be.true;
+  describe('addHtml add the elements to the final html', () => {
+    describe('addHtml with Details', () => {
+      it('should add details', () => {
+        const builder = new FormBuilder({ a: '1' });
+        builder.addHtml(builder.createDetails().addHeadline('a headline'));
+        const htmlElement = document.createElement('div');
+        builder.appendTo(htmlElement);
+        expect(htmlElement.innerHTML).to.contain('<details><h4>a headline</h4></details>');
+      });
     });
   });
 });

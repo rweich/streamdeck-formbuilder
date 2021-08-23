@@ -28,3 +28,8 @@ and add both of them to the rules section of your webpack config:
 ## Usage
 
 TODO :)
+
+
+## Links
+
+[Propertyinspector styling docs](https://developer.elgato.com/documentation/stream-deck/sdk/property-inspector/)

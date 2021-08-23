@@ -1,41 +1,60 @@
 import '../assets/css/sdpi.css';
+import '../assets/css/styles.css';
 
 import AbstractElement from './elements/AbstractElement';
+import Details from '@/elements/Details';
 import Dropdown from './elements/Dropdown';
 import ElementGroupInterface from './ElementGroupInterface';
 import ElementInterface from './ElementInterface';
 import EventEmitter from 'eventemitter3';
 import { EventType } from './EventType';
 import { FormDataType } from './FormDataType';
-import HtmlElementInterface from './HtmlElementInterface';
+import HtmlElement from '@/elements/details/HtmlElement';
+import HtmlElementInterface from '@/HtmlElementInterface';
 import Input from './elements/Input';
+import { isSomething } from 'ts-type-guards';
+
+type ValueElement = ElementInterface | ElementGroupInterface;
+type ValueElementBag<T extends FormDataType> = {
+  name: keyof T;
+  element: ValueElement;
+};
+type FormElement<T extends FormDataType> = ValueElementBag<T> | HtmlElementInterface;
+
+function isValueElementBag<T extends FormDataType>(value: unknown): value is ValueElementBag<T> {
+  return (
+    isSomething(value)
+    && (value as ValueElementBag<T>).name !== undefined
+    && (value as ValueElementBag<T>).element !== undefined
+  );
+}
 
 export default class FormBuilder<T extends FormDataType> {
-  private readonly formData: T;
-  private elements: { [P in keyof T]?: ElementInterface | ElementGroupInterface } = {};
+  private readonly initialData: T;
+  private elementBag: FormElement<T>[] = [];
   private eventEmitter = new EventEmitter<EventType>();
 
   constructor(initialData: T) {
-    this.formData = initialData;
+    this.initialData = initialData;
   }
 
   public getFormData(): T {
-    const data = this.formData;
-    for (const index in this.elements) {
-      const element = this.elements[index];
-      if (this.elementNotUndefined(element)) {
-        data[index] = element.value as T[typeof index];
-      }
+    const data = this.initialData;
+    const valueElements: ValueElementBag<T>[] = this.elementBag.filter(isValueElementBag);
+    for (const element of valueElements) {
+      data[element.name] = element.element.value as T[typeof element.name];
     }
+
     return data;
   }
 
   public appendTo(element: HTMLElement): void {
-    const formElements = Object.values(this.elements).filter(
-      <T extends HtmlElementInterface>(formElement: T | undefined): formElement is T => formElement !== undefined,
-    );
-    for (const formElement of formElements) {
-      element.append(formElement.getHtmlElement());
+    for (const formElement of this.elementBag) {
+      if (isValueElementBag<T>(formElement)) {
+        element.append(formElement.element.getHtmlElement());
+      } else {
+        element.append(formElement.getHtmlElement());
+      }
     }
   }
 
@@ -45,8 +64,17 @@ export default class FormBuilder<T extends FormDataType> {
       ? ElementGroupInterface & { elements: { [x in keyof T[K]]: ElementInterface } }
       : ElementInterface,
   ): void {
-    this.elements[name] = value;
-    value.setValue(this.formData[name]);
+    this.elementBag.push({ element: value, name });
+    value.setValue(this.initialData[name]);
+  }
+
+  public addHtml(element: HtmlElementInterface): void {
+    this.elementBag.push(element);
+  }
+
+  // TODO: add tests
+  public addHtmlElement(element: HTMLElement): void {
+    this.elementBag.push(new HtmlElement(element));
   }
 
   public createInput(): Input {
@@ -57,8 +85,17 @@ export default class FormBuilder<T extends FormDataType> {
     return this.addEventsToElement(new Dropdown());
   }
 
-  public on<K extends keyof Pick<EventType, 'change-settings'>>(eventname: K, callback: EventType[K]): void {
-    this.eventEmitter.on(eventname, callback);
+  public createDetails(): Details {
+    const details: Details = new Details();
+    details.onLinkClick((link) => this.eventEmitter.emit('click-link', link));
+    return details;
+  }
+
+  public on<K extends keyof Pick<EventType, 'change-settings' | 'click-link'>>(
+    event: K,
+    callback: EventEmitter.EventListener<EventType, K>,
+  ): void {
+    this.eventEmitter.on(event, callback);
   }
 
   private addEventsToElement<T extends AbstractElement>(element: T): T {
@@ -69,11 +106,5 @@ export default class FormBuilder<T extends FormDataType> {
 
   private onChangeElementValue(): void {
     this.eventEmitter.emit('change-settings');
-  }
-
-  private elementNotUndefined(
-    element: ElementInterface | ElementGroupInterface | undefined,
-  ): element is ElementInterface | ElementGroupInterface {
-    return element !== undefined && element.value !== undefined;
   }
 }

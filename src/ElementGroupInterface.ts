@@ -1,7 +1,7 @@
 import ElementInterface from './ElementInterface';
-import HtmlElementInterface from './HtmlElementInterface';
+import HtmlInputElementInterface from './HtmlInputElementInterface';
 
-export default interface ElementGroupInterface extends HtmlElementInterface {
+export default interface ElementGroupInterface extends HtmlInputElementInterface {
   value: Record<string, string>;
   elements: { [x: string]: ElementInterface };
 }

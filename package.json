@@ -70,7 +70,10 @@
     ]
   },
   "eslintConfig": {
-    "extends": "@rweich"
+    "extends": "@rweich",
+    "rules": {
+      "unicorn/no-array-callback-reference": 0
+    }
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [

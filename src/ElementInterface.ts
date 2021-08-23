@@ -1,6 +1,6 @@
-import HtmlElementInterface from './HtmlElementInterface';
+import HtmlInputElementInterface from './HtmlInputElementInterface';
 import { ValueType } from './elements/ValueType';
 
-export default interface ElementInterface extends HtmlElementInterface {
+export default interface ElementInterface extends HtmlInputElementInterface {
   value: ValueType;
 }
