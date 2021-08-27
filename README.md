@@ -1,5 +1,8 @@
 # streamdeck-formbuilder
 
+![Build/Test](https://github.com/rweich/streamdeck-formbuilder/workflows/Build%2FTest/badge.svg)
+[![codecov](https://codecov.io/gh/rweich/streamdeck-formbuilder/branch/main/graph/badge.svg?token=8JRUM07Acb)](https://codecov.io/gh/rweich/streamdeck-formbuilder)
+
 Helps to build forms for the propertyinspector to ease the settings handling between PI and plugin.
 
 ## Installation
