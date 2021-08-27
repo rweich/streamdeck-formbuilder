@@ -1,5 +1,6 @@
 // @see split-on-first package
 // for some weird reason mocha couldn't import this without throwing an error every time -.-
+// istanbul ignore file - not my code - hope its tested ¯\_(ツ)_/¯
 export default function splitOnFirst(string: string, separator: string): string[] {
   if (string === '' || separator === '') {
     return [];
