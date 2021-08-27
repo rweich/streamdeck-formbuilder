@@ -13,7 +13,7 @@ yarn add @rweich/streamdeck-formbuilder
 The sdpi.css from the pisamples are loaded by default. You'll need to add the style-loader and css-loader for it to work with webpack.
 
 ```shell
-yarn add style-loader css-loader
+yarn add --dev style-loader css-loader
 ```
 
 and add both of them to the rules section of your webpack config:
