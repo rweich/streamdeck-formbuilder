@@ -132,4 +132,15 @@ describe('FormBuilder', () => {
       });
     });
   });
+  describe('setFormData', () => {
+    it('should set the new data', () => {
+      const builder = new FormBuilder({ a: '1', b: '2' });
+      builder.addElement('a', builder.createInput());
+      builder.addElement('b', builder.createInput());
+      builder.setFormData({ a: '3', b: '4' });
+      const data = builder.getFormData();
+      expect(data.a).to.equal('3');
+      expect(data.b).to.equal('4');
+    });
+  });
 });

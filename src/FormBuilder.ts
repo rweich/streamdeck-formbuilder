@@ -48,6 +48,13 @@ export default class FormBuilder<T extends FormDataType> {
     return data;
   }
 
+  public setFormData(data: T): void {
+    const valueElements: ValueElementBag<T>[] = this.elementBag.filter(isValueElementBag);
+    for (const element of valueElements) {
+      element.element.setValue(data[element.name]);
+    }
+  }
+
   public appendTo(element: HTMLElement): void {
     for (const formElement of this.elementBag) {
       if (isValueElementBag<T>(formElement)) {
