@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [1.0.1](https://github.com/rweich/streamdeck-formbuilder/compare/v1.0.0...v1.0.1) (2021-09-01)
+
+
+### Miscellaneous Chores
+
+* update dependencies ([9f1c399](https://github.com/rweich/streamdeck-formbuilder/commit/9f1c3999df1b8cf74c94c484d1e642aa4ac70788))
+
 ## 1.0.0 (2021-08-27)
 
 
