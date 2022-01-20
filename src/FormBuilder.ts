@@ -1,18 +1,20 @@
 import '../assets/css/sdpi.css';
 import '../assets/css/styles.css';
 
-import AbstractElement from './elements/AbstractElement';
-import Details from '@/elements/Details';
-import Dropdown from './elements/Dropdown';
-import ElementGroupInterface from './ElementGroupInterface';
-import ElementInterface from './ElementInterface';
 import EventEmitter from 'eventemitter3';
-import { EventType } from './EventType';
-import { FormDataType } from './FormDataType';
+import { isSomething } from 'ts-type-guards';
+
+import Details from '@/elements/Details';
 import HtmlElement from '@/elements/details/HtmlElement';
 import HtmlElementInterface from '@/HtmlElementInterface';
+
+import ElementGroupInterface from './ElementGroupInterface';
+import ElementInterface from './ElementInterface';
+import AbstractElement from './elements/AbstractElement';
+import Dropdown from './elements/Dropdown';
 import Input from './elements/Input';
-import { isSomething } from 'ts-type-guards';
+import { EventType } from './EventType';
+import { FormDataType } from './FormDataType';
 
 type ValueElement = ElementInterface | ElementGroupInterface;
 type ValueElementBag<T extends FormDataType> = {

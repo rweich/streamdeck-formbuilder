@@ -1,5 +1,6 @@
-import AbstractElement from './AbstractElement';
 import { is } from 'ts-type-guards';
+
+import AbstractElement from './AbstractElement';
 
 export default class Input extends AbstractElement {
   private placeholder = '';

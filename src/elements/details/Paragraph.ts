@@ -1,8 +1,8 @@
-import LinkHelper, { LinkEvents } from '@/helper/LinkHelper';
-
 import EventEmitter from 'eventemitter3';
-import HtmlElementInterface from '@/HtmlElementInterface';
 import { is } from 'ts-type-guards';
+
+import LinkHelper, { LinkEvents } from '@/helper/LinkHelper';
+import HtmlElementInterface from '@/HtmlElementInterface';
 
 export default class Paragraph implements HtmlElementInterface {
   private readonly text;

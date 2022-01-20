@@ -1,8 +1,10 @@
-import ElementInterface from '../ElementInterface';
 import EventEmitter from 'eventemitter3';
-import { EventType } from '@/EventType';
-import { ValueType } from './ValueType';
 import { is } from 'ts-type-guards';
+
+import { EventType } from '@/EventType';
+
+import ElementInterface from '../ElementInterface';
+import { ValueType } from './ValueType';
 
 export default abstract class AbstractElement implements ElementInterface {
   private readonly htmlContainer: HTMLElement;
