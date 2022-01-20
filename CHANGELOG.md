@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.0](https://github.com/rweich/streamdeck-formbuilder/compare/v1.0.2...v2.0.0) (2022-01-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* dropped node v15 support
+* the minimum required version of node is now v14.17
+
+### Miscellaneous Chores
+
+* autofix eslint errors ([7e2ff4f](https://github.com/rweich/streamdeck-formbuilder/commit/7e2ff4f2d0b14285356a935e0161236a3d0f5813))
+* drop node 12 support / update deps ([773a0f5](https://github.com/rweich/streamdeck-formbuilder/commit/773a0f5fc6d06691736393444b49415c96622da8))
+* update dependencies ([5c9e6cb](https://github.com/rweich/streamdeck-formbuilder/commit/5c9e6cb52385ca1e2d2708b7e7fc7dadc2a379b4))
+
+
+### Continuous Integration
+
+* tweak ci-workflows ([2f53358](https://github.com/rweich/streamdeck-formbuilder/commit/2f53358fa19ff21ff856895b5d52e1c44c06b549))
+
 ### [1.0.2](https://github.com/rweich/streamdeck-formbuilder/compare/v1.0.1...v1.0.2) (2021-09-15)
 
 
