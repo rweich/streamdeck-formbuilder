@@ -1,7 +1,8 @@
 import 'mocha';
 
-import Dropdown from '@/elements/Dropdown';
 import { expect } from 'chai';
+
+import Dropdown from '@/elements/Dropdown';
 
 describe('Dropdown', () => {
   it('should have all option elements', () => {

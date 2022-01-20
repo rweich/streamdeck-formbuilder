@@ -1,7 +1,8 @@
 import 'mocha';
 
-import LinkHelper from '@/helper/LinkHelper';
 import { expect } from 'chai';
+
+import LinkHelper from '@/helper/LinkHelper';
 
 describe('LinkHelper', () => {
   const text = `

@@ -1,7 +1,8 @@
 import 'mocha';
 
-import Input from '@/elements/Input';
 import { expect } from 'chai';
+
+import Input from '@/elements/Input';
 
 describe('Input', () => {
   it('should set the placeholder', () => {

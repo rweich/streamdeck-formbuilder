@@ -1,10 +1,11 @@
 import EventEmitter from 'eventemitter3';
+
 import Headline from '@/elements/details/Headline';
 import HtmlElement from '@/elements/details/HtmlElement';
-import HtmlElementInterface from '@/HtmlElementInterface';
-import { LinkEvents } from '@/helper/LinkHelper';
 import Paragraph from '@/elements/details/Paragraph';
 import Summary from '@/elements/details/Summary';
+import { LinkEvents } from '@/helper/LinkHelper';
+import HtmlElementInterface from '@/HtmlElementInterface';
 
 export default class Details implements HtmlElementInterface {
   private readonly elements: HtmlElementInterface[] = [];

@@ -1,5 +1,6 @@
-import AbstractElement from './AbstractElement';
 import { is } from 'ts-type-guards';
+
+import AbstractElement from './AbstractElement';
 
 export default class Dropdown extends AbstractElement {
   private options: Record<'label' | 'value', string>[] = [];

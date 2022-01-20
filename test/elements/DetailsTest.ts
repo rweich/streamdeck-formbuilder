@@ -1,7 +1,8 @@
 import 'mocha';
 
-import Details from '@/elements/Details';
 import { expect } from 'chai';
+
+import Details from '@/elements/Details';
 
 describe('Details', () => {
   it('should return the details element as html', () => {

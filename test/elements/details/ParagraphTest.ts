@@ -1,7 +1,8 @@
 import 'mocha';
 
-import Paragraph from '@/elements/details/Paragraph';
 import { expect } from 'chai';
+
+import Paragraph from '@/elements/details/Paragraph';
 
 describe('Paragraph', () => {
   it('should return the paragraph element as html', () => {

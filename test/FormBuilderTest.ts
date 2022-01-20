@@ -1,12 +1,13 @@
 import 'mocha';
 
+import { expect } from 'chai';
+import { JSDOM } from 'jsdom';
+import { is } from 'ts-type-guards';
+
 import Details from '@/elements/Details';
 import Dropdown from '@/elements/Dropdown';
-import FormBuilder from '@/FormBuilder';
 import Input from '@/elements/Input';
-import { JSDOM } from 'jsdom';
-import { expect } from 'chai';
-import { is } from 'ts-type-guards';
+import FormBuilder from '@/FormBuilder';
 
 describe('FormBuilder', () => {
   describe('getFormData', () => {
