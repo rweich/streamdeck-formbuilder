@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.0.1](https://github.com/rweich/streamdeck-formbuilder/compare/v2.0.0...v2.0.1) (2022-02-08)
+
+
+### Miscellaneous Chores
+
+* fix linting warnings ([f2bc78d](https://github.com/rweich/streamdeck-formbuilder/commit/f2bc78d787fbbd7555e81ea6b54c74f9b6a101c9))
+* upgrade dependencies ([a079e4e](https://github.com/rweich/streamdeck-formbuilder/commit/a079e4e1e39bd141045b4998ec668ca42fed7680))
+
 ## [2.0.0](https://github.com/rweich/streamdeck-formbuilder/compare/v1.0.2...v2.0.0) (2022-01-20)
 
 
