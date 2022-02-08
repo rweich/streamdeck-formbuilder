@@ -1,4 +1,4 @@
-import EventEmitter from 'eventemitter3';
+import { default as EventEmitter } from 'eventemitter3';
 import { is } from 'ts-type-guards';
 
 import { EventType } from '@/EventType';

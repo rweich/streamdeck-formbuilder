@@ -1,4 +1,4 @@
-import EventEmitter from 'eventemitter3';
+import { default as EventEmitter } from 'eventemitter3';
 
 import Headline from '@/elements/details/Headline';
 import HtmlElement from '@/elements/details/HtmlElement';

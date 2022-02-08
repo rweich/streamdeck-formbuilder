@@ -1,7 +1,7 @@
 import '../assets/css/sdpi.css';
 import '../assets/css/styles.css';
 
-import EventEmitter from 'eventemitter3';
+import { default as EventEmitter } from 'eventemitter3';
 import { isSomething } from 'ts-type-guards';
 
 import Details from '@/elements/Details';
