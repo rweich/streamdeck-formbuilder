@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.0.3](https://github.com/rweich/streamdeck-formbuilder/compare/v2.0.2...v2.0.3) (2022-06-04)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump npm from 8.4.1 to 8.12.0 ([be56435](https://github.com/rweich/streamdeck-formbuilder/commit/be564353336f6f95eeb0383a108dea61b2973932))
+* **deps:** bump semver-regex from 3.1.3 to 3.1.4 ([a7c727b](https://github.com/rweich/streamdeck-formbuilder/commit/a7c727b1097ae84e2a5f1473de0ae63a4dafee36))
+
 ### [2.0.2](https://github.com/rweich/streamdeck-formbuilder/compare/v2.0.1...v2.0.2) (2022-03-30)
 
 
