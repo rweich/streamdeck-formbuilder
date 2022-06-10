@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.0.4](https://github.com/rweich/streamdeck-formbuilder/compare/v2.0.3...v2.0.4) (2022-06-10)
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** bump semantic-release from 19.0.2 to 19.0.3 ([e38b49e](https://github.com/rweich/streamdeck-formbuilder/commit/e38b49e1d2da57aba6aad9bbc8b69d40dd532972))
+
 ### [2.0.3](https://github.com/rweich/streamdeck-formbuilder/compare/v2.0.2...v2.0.3) (2022-06-04)
 
 
