@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.0.5](https://github.com/rweich/streamdeck-formbuilder/compare/v2.0.4...v2.0.5) (2022-10-16)
+
+
+### Documentation
+
+* add documentation / how to use ([8c886f2](https://github.com/rweich/streamdeck-formbuilder/commit/8c886f2f4429aa851c499b80e17637a9976ee135))
+
 ### [2.0.4](https://github.com/rweich/streamdeck-formbuilder/compare/v2.0.3...v2.0.4) (2022-06-10)
 
 
