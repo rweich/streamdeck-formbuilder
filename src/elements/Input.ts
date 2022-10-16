@@ -6,6 +6,7 @@ export default class Input extends AbstractElement {
   private placeholder = '';
   private input: HTMLInputElement | undefined;
 
+  /** Sets the placeholder that will be displayed in the field when its empty */
   public setPlaceholder(placeholder: string): this {
     this.placeholder = placeholder;
     return this;

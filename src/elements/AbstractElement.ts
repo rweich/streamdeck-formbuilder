@@ -16,6 +16,7 @@ export default abstract class AbstractElement implements ElementInterface {
     this.htmlContainer = document.createElement('div');
   }
 
+  /** the current value of the element */
   get value(): ValueType {
     return this.elementValue;
   }
@@ -41,11 +42,16 @@ export default abstract class AbstractElement implements ElementInterface {
     }
   }
 
+  /** sets the label to the passed value */
   public setLabel(label: string): this {
     this.label = label;
     return this;
   }
 
+  /**
+   * allows to set a callback to be called on every change. based on the return value of the callback this element
+   * will be shown (when true) or hidden (when false).
+   */
   public showOn(callback: () => boolean): this {
     const setDisplay = () => (this.htmlContainer.style.display = callback() ? 'flex' : 'none');
     this.eventEmitter.on('change-settings', setDisplay);
@@ -53,10 +59,12 @@ export default abstract class AbstractElement implements ElementInterface {
     return this;
   }
 
+  /** @internal */
   public on<K extends keyof EventType>(eventname: K, callback: EventEmitter.EventListener<EventType, K>): void {
     this.eventEmitter.on(eventname, callback);
   }
 
+  /** @internal */
   public reportSettingsChange(): void {
     this.eventEmitter.emit('change-settings');
   }
