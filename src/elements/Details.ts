@@ -19,16 +19,19 @@ export default class Details implements HtmlElementInterface {
     return detailsElement;
   }
 
+  /** adds a summary to the details (the clickable text that still shows when the details are collapsed) */
   public addSummary(text: string): this {
     this.elements.push(new Summary(text));
     return this;
   }
 
+  /** adds a headline to the details */
   public addHeadline(text: string): this {
     this.elements.push(new Headline(text));
     return this;
   }
 
+  /** adds a paragraph to the details */
   public addParagraph(text: string): this {
     const paragraph = new Paragraph(text);
     paragraph.onLinkClick((event) => this.eventEmitter.emit('click', event));
@@ -36,11 +39,16 @@ export default class Details implements HtmlElementInterface {
     return this;
   }
 
+  /** allows to add any html element to the details */
   public addElement(element: HTMLElement): this {
     this.elements.push(new HtmlElement(element));
     return this;
   }
 
+  /**
+   * attaches an event listener that gets called when the user clicks a link inside a paragraph
+   * @internal
+   */
   public onLinkClick(callback: (event: HTMLAnchorElement) => void): void {
     this.eventEmitter.on('click', callback);
   }

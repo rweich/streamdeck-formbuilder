@@ -6,6 +6,11 @@ export default class Dropdown extends AbstractElement {
   private options: Record<'label' | 'value', string>[] = [];
   private select: HTMLSelectElement | undefined;
 
+  /**
+   * Adds one selectable option to the dropdown
+   * @param {string} label The text to display
+   * @param {string} value The value, that will be used internally when the option was selected
+   */
   public addOption(label: string, value: string): this {
     this.options.push({ label, value });
     return this;
