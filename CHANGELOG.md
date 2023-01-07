@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.0.6](https://github.com/rweich/streamdeck-formbuilder/compare/v2.0.5...v2.0.6) (2023-01-07)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump json5 from 1.0.1 to 1.0.2 ([bca0412](https://github.com/rweich/streamdeck-formbuilder/commit/bca0412a7fcffd8052860b9560b2d0cc36e5566c))
+
 ### [2.0.5](https://github.com/rweich/streamdeck-formbuilder/compare/v2.0.4...v2.0.5) (2022-10-16)
 
 
