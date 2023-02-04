@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.0.7](https://github.com/rweich/streamdeck-formbuilder/compare/v2.0.6...v2.0.7) (2023-02-04)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump http-cache-semantics from 4.1.0 to 4.1.1 ([bc7caee](https://github.com/rweich/streamdeck-formbuilder/commit/bc7caee7e0f1c7bcf6b5d72f7982292808564ef6))
+
 ### [2.0.6](https://github.com/rweich/streamdeck-formbuilder/compare/v2.0.5...v2.0.6) (2023-01-07)
 
 
