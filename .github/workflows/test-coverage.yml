@@ -4,15 +4,37 @@ on: [ push, pull_request ]
 
 jobs:
   build:
-    name: Build
+    name: Code-Coverage
+
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: step-security/harden-runner@18bf8ad2ca49c14cbb28b91346d626ccfb00c518 # 2.1.0
         with:
-          node-version: 16
-      - run: yarn install
-      - run: yarn test-coverage
-      - uses: codecov/codecov-action@v1
+          disable-sudo: true
+          egress-policy: block
+          allowed-endpoints: >
+            codecov.io:443
+            github.com:443
+            registry.npmjs.org:443
+            registry.yarnpkg.com:443
+            storage.googleapis.com:443
+            uploader.codecov.io:443
+
+      - name: Checkout
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # 3.3.0
+
+      - name: Install Node
+        uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # 3.6.0
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Run tests with coverage
+        run: yarn test-coverage
+
+      - uses: codecov/codecov-action@d9f34f8cd5cb3b3eb79b3e4b5dae3a16df499a70 # 3.1.1
         with:
           directory: ./coverage/
