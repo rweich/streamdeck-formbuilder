@@ -14,9 +14,10 @@ jobs:
       - uses: step-security/harden-runner@18bf8ad2ca49c14cbb28b91346d626ccfb00c518 # 2.1.0
         with:
           disable-sudo: true
-          egress-policy: audit
+          egress-policy: block
           allowed-endpoints: >
             api.github.com:443
+            github.com:22
             github.com:443
             registry.npmjs.org:443
             registry.yarnpkg.com:443
