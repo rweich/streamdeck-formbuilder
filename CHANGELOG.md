@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.8](https://github.com/rweich/streamdeck-formbuilder/compare/v2.0.7...v2.0.8) (2023-02-21)
+
+
+### Miscellaneous Chores
+
+* add executable flag to commit hooks ([3c438bf](https://github.com/rweich/streamdeck-formbuilder/commit/3c438bf3145f725370beb00d9dda322b337a5241))
+* make sure the commit hooks don't run on CI ([a4f5a34](https://github.com/rweich/streamdeck-formbuilder/commit/a4f5a344556384d418044512e1379cc0ee6cd2da))
+* update dependencies (major) ([7549461](https://github.com/rweich/streamdeck-formbuilder/commit/75494612d89a8c68a030fe1b0bb839d4d0e8c60d))
+
 ### [2.0.7](https://github.com/rweich/streamdeck-formbuilder/compare/v2.0.6...v2.0.7) (2023-02-04)
 
 

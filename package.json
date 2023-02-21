@@ -1,6 +1,6 @@
 {
   "name": "@rweich/streamdeck-formbuilder",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "author": "rweich",
   "license": "MIT",
   "main": "dist/index.js",
