@@ -1,5 +1,4 @@
 import { default as EventEmitter } from 'eventemitter3';
-import { is } from 'ts-type-guards';
 
 import { EventType } from '@/EventType';
 
@@ -7,9 +6,9 @@ import ElementInterface from '../ElementInterface';
 import { ValueType } from './ValueType';
 
 export default abstract class AbstractElement implements ElementInterface {
-  private readonly htmlContainer: HTMLElement;
+  protected readonly eventEmitter = new EventEmitter<EventType>();
+  protected readonly htmlContainer: HTMLElement;
   private label = '';
-  private eventEmitter = new EventEmitter<EventType>();
   private elementValue: ValueType = '';
 
   constructor() {
@@ -21,25 +20,23 @@ export default abstract class AbstractElement implements ElementInterface {
     return this.elementValue;
   }
 
-  protected abstract getInput(): HTMLElement;
+  /** returns all the (input) elements to append to the html-container */
+  protected abstract getElementsToAppend(): HTMLElement[];
+
+  /** propagates this elements value to all the inputs included in this element */
+  protected abstract propagateValue(value: ValueType): void;
 
   public getHtmlElement(): HTMLElement {
-    this.htmlContainer.classList.add('sdpi-item');
-    const label = this.createLabel();
-    if (label) {
-      this.htmlContainer.append(label);
+    if (this.htmlContainer.childElementCount === 0) {
+      this.fillHtmlContainer();
     }
 
-    this.htmlContainer.append(this.getInput());
     return this.htmlContainer;
   }
 
   public setValue(value: ValueType): void {
     this.elementValue = value;
-    const input = this.getInput();
-    if (typeof value === 'string' && (is(HTMLInputElement)(input) || is(HTMLSelectElement)(input))) {
-      input.value = value;
-    }
+    this.propagateValue(value);
   }
 
   /** sets the label to the passed value */
@@ -82,5 +79,17 @@ export default abstract class AbstractElement implements ElementInterface {
   protected changeValue(value: string): void {
     this.setValue(value);
     this.eventEmitter.emit('change-value');
+  }
+
+  private fillHtmlContainer(): void {
+    this.htmlContainer.classList.add('sdpi-item');
+    const label = this.createLabel();
+    if (label) {
+      this.htmlContainer.append(label);
+    }
+
+    for (const element of this.getElementsToAppend()) {
+      this.htmlContainer.append(element);
+    }
   }
 }

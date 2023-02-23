@@ -1,4 +1,6 @@
-import { is } from 'ts-type-guards';
+import { is, isString } from 'ts-type-guards';
+
+import { ValueType } from '@/elements/ValueType';
 
 import AbstractElement from './AbstractElement';
 
@@ -12,11 +14,22 @@ export default class Input extends AbstractElement {
     return this;
   }
 
-  protected getInput(): HTMLElement {
+  protected getElementsToAppend(): HTMLElement[] {
+    return [this.getInput()];
+  }
+
+  protected propagateValue(value: ValueType): void {
+    if (!isString(value)) {
+      return;
+    }
+    this.getInput().value = value;
+  }
+
+  private getInput(): HTMLInputElement {
     if (!this.input) {
       this.input = document.createElement('input');
       this.input.classList.add('sdpi-item-value');
-      this.input.addEventListener('input', (error) => this.onInput(error));
+      this.input.addEventListener('input', (event) => this.onInput(event));
     }
     if (this.placeholder !== '') {
       this.input.placeholder = this.placeholder;

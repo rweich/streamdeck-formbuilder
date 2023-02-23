@@ -7,6 +7,7 @@ import { is } from 'ts-type-guards';
 import Details from '@/elements/Details';
 import Dropdown from '@/elements/Dropdown';
 import Input from '@/elements/Input';
+import Range from '@/elements/Range';
 import FormBuilder from '@/FormBuilder';
 
 describe('FormBuilder', () => {
@@ -106,6 +107,12 @@ describe('FormBuilder', () => {
         builder.addHtml(builder.createDetails());
         const htmlElement = document.createElement('div');
         builder.appendTo(htmlElement);
+      });
+    });
+    describe('createRange', () => {
+      it('should return an range-input element', () => {
+        const builder = new FormBuilder({ a: '1' });
+        expect(is(Range)(builder.createRange(1, 2))).to.be.true;
       });
     });
   });
