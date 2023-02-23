@@ -1,4 +1,6 @@
-import { is } from 'ts-type-guards';
+import { is, isString } from 'ts-type-guards';
+
+import { ValueType } from '@/elements/ValueType';
 
 import AbstractElement from './AbstractElement';
 
@@ -16,7 +18,18 @@ export default class Dropdown extends AbstractElement {
     return this;
   }
 
-  protected getInput(): HTMLElement {
+  protected getElementsToAppend(): HTMLElement[] {
+    return [this.getSelect()];
+  }
+
+  protected propagateValue(value: ValueType): void {
+    if (!isString(value)) {
+      return;
+    }
+    this.getSelect().value = value;
+  }
+
+  private getSelect(): HTMLSelectElement {
     if (this.select) {
       return this.select;
     }

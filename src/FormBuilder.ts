@@ -6,6 +6,7 @@ import { isSomething } from 'ts-type-guards';
 
 import Details from '@/elements/Details';
 import HtmlElement from '@/elements/details/HtmlElement';
+import Range from '@/elements/Range';
 import HtmlElementInterface from '@/HtmlElementInterface';
 
 import ElementGroupInterface from './ElementGroupInterface';
@@ -123,6 +124,11 @@ export default class FormBuilder<T extends FormDataType> {
     const details: Details = new Details();
     details.onLinkClick((link) => this.eventEmitter.emit('click-link', link));
     return details;
+  }
+
+  /** Creates a range-input (or slider) element */
+  public createRange(min: number, max: number, step = 1): Range {
+    return this.addEventsToElement(new Range(min, max, step));
   }
 
   /**

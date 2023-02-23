@@ -13,22 +13,24 @@ yarn add @rweich/streamdeck-formbuilder
 
 ### Setup webpack
 
-The sdpi.css from the official [PISamples](https://github.com/elgatosf/streamdeck-pisamples) are loaded by default.
+The sdpi.css from the official [PISamples](https://github.com/elgatosf/streamdeck-pisamples) plugin are loaded by default.
 
-When using webpack, it's necessary to install and add the `style-loader` and `css-loader` to the config.
+When using webpack, it's necessary to:
 
-```shell
-yarn add --dev style-loader css-loader
-```
+1. install the `style-loader` and `css-loader` packages:
 
-and add both of them to the rules section of your webpack config:
+    ```shell
+    yarn add --dev style-loader css-loader
+    ```
 
-```javascript
-{
-  test: /\.css$/i,
-  use: ['style-loader', 'css-loader'],
-}
-```
+1. add both of them to the rules section of your webpack config:
+
+    ```javascript
+    {
+      test: /\.css$/i,
+      use: ['style-loader', 'css-loader'],
+    }
+    ```
 
 ## Example Usage
 
@@ -60,6 +62,39 @@ builder.on('change-settings', () => {
   // ...
 });
 ```
+
+## Table of Contents
+
+- [Installation](#installation)
+  - [Setup webpack](#setup-webpack)
+- [Example Usage](#example-usage)
+- [Table of Contents](#table-of-contents)
+- [FormBuilder API](#formbuilder-api)
+  - [FormBuilder](#formbuilder)
+  - [addElement](#addelement)
+  - [addHtml](#addhtml)
+  - [addHtmlElement](#addhtmlelement)
+  - [createDetails](#createdetails)
+  - [createDropdown](#createdropdown)
+  - [createInput](#createinput)
+  - [createRange](#createrange)
+- [Details API](#details-api)
+  - [addSummary](#addsummary)
+  - [addHeadline](#addheadline)
+  - [addParagraph](#addparagraph)
+  - [addElement](#addelement-1)
+- [Dropdown API](#dropdown-api)
+  - [addOption](#addoption)
+- [Input API](#input-api)
+  - [setPlaceholder](#setplaceholder)
+- [Range API](#range-api)
+  - [enableMinMaxLabels](#enableminmaxlabels)
+  - [setTickSteps](#setticksteps)
+- [shared Element API](#shared-element-api)
+  - [setLabel](#setlabel)
+  - [showOn](#showon)
+- [Typescript](#typescript)
+- [Links](#links)
 
 ## FormBuilder API
 
@@ -170,6 +205,26 @@ Example:
 builder.addElement('username', builder.createInput());
 ```
 
+---
+
+### createRange
+
+> See [Range API](#range-api) to get an overview how to use the return value.
+
+Creates a range-input (or slider) element.
+
+`createRange(min: number, max: number, step: number = 1): Range`
+
+- `min`: The lowest value in the range of permitted values
+- `max`: The greatest value in the range of permitted values
+- `step`: The step attribute is a number that specifies the granularity that the value must adhere to
+
+Example:
+
+```javascript
+builder.addElement('brightness', builder.createRange(1, 10));
+```
+
 ## Details API
 
 The `Details` object, returned by `createDetails`, can be customized using the following methods.
@@ -255,6 +310,33 @@ builder.createInput()
 Sets the placeholder that will be displayed in the field when its empty
 
 `setPlaceholder(placeholder: string): Input`
+
+## Range API
+
+The `Range` object, returned by `createRange`, can be customized using the following methods (including the ones from the [shared API](#shared-element-api).
+
+Example:
+
+```javascript
+builder.createRange(0, 100, 20)
+  .setLabel('choose a size')
+  .enableMinMaxLabels()
+  .setTickSteps(20, 40, 60, 80);
+```
+
+### enableMinMaxLabels
+
+Show labels displaying the min-max values in front and behind the slider.
+
+`enableMinMaxLabels(): Range`
+
+---
+
+### setTickSteps
+
+Allows to set steps, which add tick marks and make the slider snap to the values.
+
+`setTickSteps(mark1: number, mark2: number, ..., markN: number): Range`
 
 ## shared Element API
 
