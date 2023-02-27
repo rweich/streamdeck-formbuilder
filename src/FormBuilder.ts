@@ -6,6 +6,7 @@ import { isSomething } from 'ts-type-guards';
 
 import Details from '@/elements/Details';
 import HtmlElement from '@/elements/details/HtmlElement';
+import RangeProgress from '@/elements/element-customizer/RangeProgress';
 import Range from '@/elements/Range';
 import HtmlElementInterface from '@/HtmlElementInterface';
 
@@ -128,7 +129,7 @@ export default class FormBuilder<T extends FormDataType> {
 
   /** Creates a range-input (or slider) element */
   public createRange(min: number, max: number, step = 1): Range {
-    return this.addEventsToElement(new Range(min, max, step));
+    return this.addEventsToElement(new Range(min, max, step, [new RangeProgress()]));
   }
 
   /**

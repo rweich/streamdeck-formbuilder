@@ -1,6 +1,9 @@
+import EventEmitter from 'eventemitter3';
 import { is, isString } from 'ts-type-guards';
 
 import AbstractElement from '@/elements/AbstractElement';
+import { CustomizeRangeEventTypes } from '@/elements/element-customizer/CustomizeRangeEventTypes';
+import { CustomizeRangeInterface } from '@/elements/element-customizer/CustomizeRangeInterface';
 import { ValueType } from '@/elements/ValueType';
 
 export default class Range extends AbstractElement {
@@ -10,13 +13,18 @@ export default class Range extends AbstractElement {
   private showLabels = false;
   private tickSteps: number[] = [];
   private range: HTMLInputElement | undefined;
+  private readonly customizeEmitter = new EventEmitter<CustomizeRangeEventTypes>();
 
-  constructor(min: number, max: number, step = 1) {
+  constructor(min: number, max: number, step: number, customizers: CustomizeRangeInterface[]) {
     super();
     this.htmlContainer.setAttribute('type', 'range');
     this.min = String(min);
     this.max = String(max);
     this.step = step;
+
+    for (const customizer of customizers) {
+      customizer.attachListeners(this.customizeEmitter);
+    }
   }
 
   /** Show labels displaying the min-max values in front and behind the slider */
@@ -77,7 +85,7 @@ export default class Range extends AbstractElement {
     }
     const range = this.getRange();
     range.value = value;
-    range.style.setProperty('--val', value);
+    this.customizeEmitter.emit('changeValue', range, value);
   }
 
   private getRange(): HTMLInputElement {
@@ -89,17 +97,17 @@ export default class Range extends AbstractElement {
     this.range.min = this.min;
     this.range.max = this.max;
     this.range.step = String(this.step);
-    this.range.style.setProperty('--min', this.min);
-    this.range.style.setProperty('--max', this.max);
-    this.range.style.setProperty('--val', '0');
     this.range.addEventListener('input', (event) => this.onInput(event));
+
+    this.customizeEmitter.emit('createRange', this.range);
+
     return this.range;
   }
 
   private onInput(event: Event): void {
     if (is(HTMLInputElement)(event.target)) {
       this.changeValue(event.target.value);
-      event.target.style.setProperty('--val', event.target.value);
+      this.customizeEmitter.emit('changeValue', event.target, event.target.value);
     }
   }
 }
