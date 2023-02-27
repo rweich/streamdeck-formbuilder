@@ -1,3 +1,21 @@
 details a {
   padding-right: 0;
 }
+
+/*
+ * fix sdpi-bug, where the range progress is not displayed
+ * @see https://css-tricks.com/sliding-nightmare-understanding-range-input/
+ * uses js to add/modify the --min/--max/--val values
+ */
+input[type=range] {
+  --thumb-d: 16px; /* value taken from sdpi's ::-webkit-slider-thumb width/height */
+  --range: calc(var(--max) - var(--min));
+  --ratio: calc((var(--val) - var(--min))/var(--range));
+  --sx: calc(.5 * var(--thumb-d) + var(--ratio)*(100% - var(--thumb-d)));
+  --progress-color: #fff;
+  --track-bgcolor: #979797; /* value taken from sdpi's ::-webkit-slider-runnable-track background */
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  background: linear-gradient(var(--progress-color), var(--progress-color)) 0/ var(--sx)
+    100% no-repeat var(--track-bgcolor);
+}

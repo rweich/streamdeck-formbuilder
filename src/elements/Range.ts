@@ -4,8 +4,8 @@ import AbstractElement from '@/elements/AbstractElement';
 import { ValueType } from '@/elements/ValueType';
 
 export default class Range extends AbstractElement {
-  private readonly min: number;
-  private readonly max: number;
+  private readonly min: string;
+  private readonly max: string;
   private readonly step: number;
   private showLabels = false;
   private tickSteps: number[] = [];
@@ -14,8 +14,8 @@ export default class Range extends AbstractElement {
   constructor(min: number, max: number, step = 1) {
     super();
     this.htmlContainer.setAttribute('type', 'range');
-    this.min = min;
-    this.max = max;
+    this.min = String(min);
+    this.max = String(max);
     this.step = step;
   }
 
@@ -43,7 +43,7 @@ export default class Range extends AbstractElement {
 
     if (this.showLabels) {
       const label = document.createElement('span');
-      label.textContent = String(this.min);
+      label.textContent = this.min;
       wrap.append(label);
     }
 
@@ -64,7 +64,7 @@ export default class Range extends AbstractElement {
 
     if (this.showLabels) {
       const label = document.createElement('span');
-      label.textContent = String(this.max);
+      label.textContent = this.max;
       wrap.append(label);
     }
 
@@ -75,7 +75,9 @@ export default class Range extends AbstractElement {
     if (!isString(value)) {
       return;
     }
-    this.getRange().value = value;
+    const range = this.getRange();
+    range.value = value;
+    range.style.setProperty('--val', value);
   }
 
   private getRange(): HTMLInputElement {
@@ -84,9 +86,12 @@ export default class Range extends AbstractElement {
     }
     this.range = document.createElement('input');
     this.range.type = 'range';
-    this.range.min = String(this.min);
-    this.range.max = String(this.max);
+    this.range.min = this.min;
+    this.range.max = this.max;
     this.range.step = String(this.step);
+    this.range.style.setProperty('--min', this.min);
+    this.range.style.setProperty('--max', this.max);
+    this.range.style.setProperty('--val', '0');
     this.range.addEventListener('input', (event) => this.onInput(event));
     return this.range;
   }
@@ -94,6 +99,7 @@ export default class Range extends AbstractElement {
   private onInput(event: Event): void {
     if (is(HTMLInputElement)(event.target)) {
       this.changeValue(event.target.value);
+      event.target.style.setProperty('--val', event.target.value);
     }
   }
 }
