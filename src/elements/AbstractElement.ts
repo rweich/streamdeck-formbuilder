@@ -76,6 +76,7 @@ export default abstract class AbstractElement implements ElementInterface {
     return label;
   }
 
+  /** to be called, when the internal input value has changed */
   protected changeValue(value: string): void {
     this.setValue(value);
     this.eventEmitter.emit('change-value');
