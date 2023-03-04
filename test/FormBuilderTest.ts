@@ -108,6 +108,15 @@ describe('FormBuilder', () => {
         const htmlElement = document.createElement('div');
         builder.appendTo(htmlElement);
       });
+      it('should emit the click-link event, when a link in the details was clicked', (done) => {
+        const builder = new FormBuilder({ a: '1' });
+        builder.addHtml(builder.createDetails().addParagraph('p with a [link](https://example.com) inside'));
+        builder.on('click-link', () => done());
+        const htmlElement = document.createElement('div');
+        builder.appendTo(htmlElement);
+        const link = htmlElement.querySelector('a');
+        link?.dispatchEvent(new Event('click'));
+      });
     });
     describe('createRange', () => {
       it('should return an range-input element', () => {

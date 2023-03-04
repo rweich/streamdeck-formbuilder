@@ -15,6 +15,11 @@ describe('Input', () => {
       input.setValue('new value');
       expect(input.getHtmlElement().querySelector('input')?.value).to.equal('new value');
     });
+    it('should not change the value if its something it cannot handle', () => {
+      const input = new Input();
+      input.setValue({ foo: '123' });
+      expect(input.getHtmlElement().querySelector('input')?.value).to.equal('');
+    });
   });
 
   describe('default/parent features', () => {
