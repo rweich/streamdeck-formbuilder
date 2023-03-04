@@ -8,7 +8,7 @@ details a {
  * uses js to add/modify the --min/--max/--val values
  */
 input[type=range] {
-  --thumb-d: 16px; /* value taken from sdpi's ::-webkit-slider-thumb width/height */
+  --thumb-d: 12px; /* value taken from sdpi's input[type="range"]::-webkit-slider-thumb width/height */
   --range: calc(var(--max) - var(--min));
   --ratio: calc((var(--val) - var(--min))/var(--range));
   --sx: calc(.5 * var(--thumb-d) + var(--ratio)*(100% - var(--thumb-d)));
@@ -18,4 +18,34 @@ input[type=range] {
 input[type="range"]::-webkit-slider-runnable-track {
   background: linear-gradient(var(--progress-color), var(--progress-color)) 0/ var(--sx)
     100% no-repeat var(--track-bgcolor);
+}
+
+/*
+ * add tick marks
+ */
+input[type=range].with-ticks {
+  --tick-color: var(--track-bgcolor);
+  --ruler-width: 2px;
+  --track-w: var(--sdpi-width);
+  --mover-w: calc(var(--track-w) - var(--thumb-d) - 2px);
+  --ruler-u: calc(1 / (var(--max) / var(--step)) * var(--mover-w));
+  background:
+    repeating-linear-gradient(
+      90deg,
+      var(--tick-color) 0,
+      var(--tick-color) var(--ruler-width),
+      transparent 0,
+      transparent var(--ruler-u)
+    )
+    calc(.55 * (var(--thumb-d) - var(--ruler-width)))
+    calc(1.5 * var(--thumb-d)) / calc(var(--mover-w) + var(--ruler-width))
+    calc(.5 * var(--thumb-d))
+    no-repeat
+    !important;
+}
+span+input[type="range"].with-ticks {
+  --track-w: 168px;
+  height: 26px;
+  margin-top: 2px;
+  margin-bottom: 0;
 }

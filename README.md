@@ -217,7 +217,8 @@ Creates a range-input (or slider) element.
 
 - `min`: The lowest value in the range of permitted values
 - `max`: The greatest value in the range of permitted values
-- `step`: The step attribute is a number that specifies the granularity that the value must adhere to
+- `step`: The step attribute is a number that specifies the granularity that the value must adhere to.
+Will make the slider snap to the steps.
 
 Example:
 
@@ -321,7 +322,7 @@ Example:
 builder.createRange(0, 100, 20)
   .setLabel('choose a size')
   .enableMinMaxLabels()
-  .setTickSteps(20, 40, 60, 80);
+  .enableTicks();
 ```
 
 ### enableMinMaxLabels
@@ -332,11 +333,11 @@ Show labels displaying the min-max values in front and behind the slider.
 
 ---
 
-### setTickSteps
+### enableTicks
 
-Allows to set steps, which add tick marks and make the slider snap to the values.
+Shows tick marks below the slider.
 
-`setTickSteps(mark1: number, mark2: number, ..., markN: number): Range`
+`enableTicks(): Range`
 
 ## shared Element API
 
