@@ -6,7 +6,6 @@ import { isSomething } from 'ts-type-guards';
 
 import Details from '@/elements/Details';
 import HtmlElement from '@/elements/details/HtmlElement';
-import RangeProgress from '@/elements/element-customizer/RangeProgress';
 import Range from '@/elements/Range';
 import HtmlElementInterface from '@/HtmlElementInterface';
 
@@ -127,9 +126,15 @@ export default class FormBuilder<T extends FormDataType> {
     return details;
   }
 
-  /** Creates a range-input (or slider) element */
+  /**
+   * Creates a range-input (or slider) element
+   * @param {number} min The lowest value in the range of permitted values
+   * @param {number} max The greatest value in the range of permitted values
+   * @param {number} step The step attribute is a number that specifies the granularity that the value must adhere to.
+   * Will make the slider snap to the steps.
+   */
   public createRange(min: number, max: number, step = 1): Range {
-    return this.addEventsToElement(new Range(min, max, step, [new RangeProgress()]));
+    return this.addEventsToElement(new Range(min, max, step));
   }
 
   /**

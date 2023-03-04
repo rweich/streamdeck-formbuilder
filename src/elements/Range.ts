@@ -2,8 +2,9 @@ import EventEmitter from 'eventemitter3';
 import { is, isString } from 'ts-type-guards';
 
 import AbstractElement from '@/elements/AbstractElement';
-import { CustomizeRangeEventTypes } from '@/elements/element-customizer/CustomizeRangeEventTypes';
-import { CustomizeRangeInterface } from '@/elements/element-customizer/CustomizeRangeInterface';
+import { RangeEvents } from '@/elements/range/RangeEvents';
+import RangeProgress from '@/elements/range/RangeProgress';
+import RangeTicks from '@/elements/range/RangeTicks';
 import { ValueType } from '@/elements/ValueType';
 
 export default class Range extends AbstractElement {
@@ -11,20 +12,18 @@ export default class Range extends AbstractElement {
   private readonly max: string;
   private readonly step: number;
   private showLabels = false;
-  private tickSteps: number[] = [];
   private range: HTMLInputElement | undefined;
-  private readonly customizeEmitter = new EventEmitter<CustomizeRangeEventTypes>();
+  private readonly internalEventEmitter = new EventEmitter<RangeEvents>();
 
-  constructor(min: number, max: number, step: number, customizers: CustomizeRangeInterface[]) {
+  constructor(min: number, max: number, step: number) {
     super();
     this.htmlContainer.setAttribute('type', 'range');
     this.min = String(min);
     this.max = String(max);
     this.step = step;
 
-    for (const customizer of customizers) {
-      customizer.attachListeners(this.customizeEmitter);
-    }
+    new RangeTicks().attachListeners(this.internalEventEmitter);
+    new RangeProgress().attachListeners(this.internalEventEmitter);
   }
 
   /** Show labels displaying the min-max values in front and behind the slider */
@@ -33,48 +32,28 @@ export default class Range extends AbstractElement {
     return this;
   }
 
-  /** Allows to set steps, which add tick marks and make the slider snap to the values */
-  public setTickSteps(...steps: number[]): this {
-    this.tickSteps = steps;
+  public enableTicks(): this {
+    this.internalEventEmitter.emit('enable-ticks');
     return this;
   }
 
   protected getElementsToAppend(): HTMLElement[] {
-    const wrapContainer = this.showLabels || this.tickSteps.length > 0;
-
-    if (!wrapContainer) {
+    if (!this.showLabels) {
       return [this.getRange()];
     }
 
     const wrap = document.createElement('div');
     wrap.className = 'sdpi-item-value';
 
-    if (this.showLabels) {
-      const label = document.createElement('span');
-      label.textContent = this.min;
-      wrap.append(label);
-    }
+    const label = document.createElement('span');
+    label.textContent = this.min;
+    wrap.append(label);
 
-    const range = this.getRange();
-    wrap.append(range);
+    wrap.append(this.getRange());
 
-    if (this.tickSteps.length > 0) {
-      const list = document.createElement('datalist');
-      list.id = 'numbers';
-      range.setAttribute('list', 'numbers');
-      for (const step of this.tickSteps) {
-        const option = document.createElement('option');
-        option.textContent = String(step);
-        list.append(option);
-      }
-      wrap.append(list);
-    }
-
-    if (this.showLabels) {
-      const label = document.createElement('span');
-      label.textContent = this.max;
-      wrap.append(label);
-    }
+    const label2 = document.createElement('span');
+    label2.textContent = this.max;
+    wrap.append(label2);
 
     return [wrap];
   }
@@ -85,7 +64,7 @@ export default class Range extends AbstractElement {
     }
     const range = this.getRange();
     range.value = value;
-    this.customizeEmitter.emit('changeValue', range, value);
+    this.internalEventEmitter.emit('update-value', range, value);
   }
 
   private getRange(): HTMLInputElement {
@@ -99,7 +78,7 @@ export default class Range extends AbstractElement {
     this.range.step = String(this.step);
     this.range.addEventListener('input', (event) => this.onInput(event));
 
-    this.customizeEmitter.emit('createRange', this.range);
+    this.internalEventEmitter.emit('create-range', this.range);
 
     return this.range;
   }
@@ -107,7 +86,7 @@ export default class Range extends AbstractElement {
   private onInput(event: Event): void {
     if (is(HTMLInputElement)(event.target)) {
       this.changeValue(event.target.value);
-      this.customizeEmitter.emit('changeValue', event.target, event.target.value);
+      this.internalEventEmitter.emit('update-value', event.target, event.target.value);
     }
   }
 }
