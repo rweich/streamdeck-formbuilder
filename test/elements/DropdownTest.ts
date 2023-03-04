@@ -15,8 +15,18 @@ describe('Dropdown', () => {
       expect(options[2].textContent).to.equal('the o3');
     });
     it('should set value on the dropdown', () => {
-      const input = new Dropdown().addOption('test', 'new value');
+      const input = new Dropdown().addOption('test', 'old value').addOption('test', 'new value');
       input.setValue('new value');
+      expect(input.getHtmlElement().querySelector('select')?.value).to.equal('new value');
+    });
+    it('should not change the dropdowns value if its wrong', () => {
+      const input = new Dropdown().addOption('test', 'new value');
+      input.setValue('wrong value');
+      expect(input.getHtmlElement().querySelector('select')?.value).to.equal('');
+    });
+    it('should not change the value if its something it cannot handle', () => {
+      const input = new Dropdown().addOption('test', 'new value');
+      input.setValue({ foo: '123' });
       expect(input.getHtmlElement().querySelector('select')?.value).to.equal('new value');
     });
   });
