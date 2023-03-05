@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.0](https://github.com/rweich/streamdeck-formbuilder/compare/v2.0.8...v2.1.0) (2023-03-05)
+
+
+### Features
+
+* add range ticks ([a028839](https://github.com/rweich/streamdeck-formbuilder/commit/a028839d2f698ed86ae4081f6b12ef76564076c0))
+* add range/slider-input ([4a8343a](https://github.com/rweich/streamdeck-formbuilder/commit/4a8343adb5b98efde120b137c70b52717728e70a))
+
+
+### Bug Fixes
+
+* details, where the marker was not displayed anymore ([21cc18f](https://github.com/rweich/streamdeck-formbuilder/commit/21cc18f3dc6be0bb7f7c040a1c047ccce83ad332))
+* sdpi-bug where the range progress is not displayed ([49cd6ef](https://github.com/rweich/streamdeck-formbuilder/commit/49cd6efaed723a47b9c563231b2618c4f6270180))
+* tick-mark-calculation ([b8eb1a3](https://github.com/rweich/streamdeck-formbuilder/commit/b8eb1a3cc88383a9c7a15108f0bb4c61bb8b6efa))
+
+
+### Code Refactoring
+
+* extract the rangeprogress code into its own class ([4d9c45c](https://github.com/rweich/streamdeck-formbuilder/commit/4d9c45caaa2ef580e5b1a67b91004df5edd6751b))
+
+
+### Miscellaneous Chores
+
+* **deps:** bump step-security/harden-runner from 2.1.0 to 2.2.0 ([453cfcc](https://github.com/rweich/streamdeck-formbuilder/commit/453cfccb044ae55bee9ae873e43b1bba75493884))
+* update sdpi.css (e69b5c9 2023-03-02) ([e773a25](https://github.com/rweich/streamdeck-formbuilder/commit/e773a25b798a9e87c257893e49614e6dabd4c06e))
+* update sdpi.css with elgatos current version ([893a302](https://github.com/rweich/streamdeck-formbuilder/commit/893a3029efb60d5d8c8fb2be6d743958ea6ab908))
+
+
+### Documentation
+
+* update readme for the new sdpi.css location ([c77189e](https://github.com/rweich/streamdeck-formbuilder/commit/c77189e2ade77ce781ed461c8dfcb956228809bb))
+
 ## [2.0.8](https://github.com/rweich/streamdeck-formbuilder/compare/v2.0.7...v2.0.8) (2023-02-21)
 
 
