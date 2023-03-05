@@ -28,18 +28,18 @@ input[type=range].with-ticks {
   --ruler-width: 2px;
   --track-w: var(--sdpi-width);
   --mover-w: calc(var(--track-w) - var(--thumb-d) - 2px);
-  --ruler-u: calc(1 / (var(--max) / var(--step)) * var(--mover-w));
+  --ruler-u: calc(1 / ((var(--max) - var(--min)) / var(--step)) * var(--mover-w));
   background:
     repeating-linear-gradient(
       90deg,
-      var(--tick-color) 0,
-      var(--tick-color) var(--ruler-width),
-      transparent 0,
-      transparent var(--ruler-u)
+      var(--tick-color) 0 var(--ruler-width),
+      transparent 0 var(--ruler-u)
     )
     calc(.55 * (var(--thumb-d) - var(--ruler-width)))
-    calc(1.5 * var(--thumb-d)) / calc(var(--mover-w) + var(--ruler-width))
-    calc(.5 * var(--thumb-d))
+      calc(1.5 * var(--thumb-d))
+    /
+    calc(var(--mover-w) + var(--ruler-width))
+      calc(.5 * var(--thumb-d))
     no-repeat
     !important;
 }
