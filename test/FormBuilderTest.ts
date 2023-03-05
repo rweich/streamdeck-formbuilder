@@ -132,7 +132,7 @@ describe('FormBuilder', () => {
         builder.addHtml(builder.createDetails().addHeadline('a headline'));
         const htmlElement = document.createElement('div');
         builder.appendTo(htmlElement);
-        expect(htmlElement.innerHTML).to.contain('<details><h4>a headline</h4></details>');
+        expect(htmlElement.innerHTML).to.contain('<details class="pointer"><h4>a headline</h4></details>');
       });
     });
     describe('addHtmlElement', () => {
