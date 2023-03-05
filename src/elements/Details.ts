@@ -13,6 +13,7 @@ export default class Details implements HtmlElementInterface {
 
   public getHtmlElement(): HTMLElement {
     const detailsElement = document.createElement('details');
+    detailsElement.classList.add('pointer');
     for (const element of this.elements) {
       detailsElement.append(element.getHtmlElement());
     }
