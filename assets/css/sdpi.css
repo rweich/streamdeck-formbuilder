@@ -1,18 +1,3 @@
-:root {
-    --sdpi-bgcolor: #2D2D2D;
-    --sdpi-background: #3D3D3D;
-    --sdpi-color: #d8d8d8;
-    --sdpi-bordercolor: #3a3a3a;
-    --sdpi-linecolor: #454545;
-    --sdpi-buttonbordercolor: #969696;
-    --sdpi-borderradius: 0px;
-    --sdpi-width: 224px;
-    --sdpi-fontweight: 600;
-    --sdpi-letterspacing: -0.25pt;
-    --sdpi-tab-color: #969696;
-    --sdpi-tab-font-size: 9pt;
-}
-
 html {
     --sdpi-bgcolor: #2D2D2D;
     --sdpi-background: #3D3D3D;
@@ -23,6 +8,15 @@ html {
     --sdpi-width: 224px;
     --sdpi-fontweight: 600;
     --sdpi-letterspacing: -0.25pt;
+    --sdpi-tab-color: #969696;
+    --sdpi-tab-left-margin: 1px;
+    --sdpi-tab-top-offset: 1px;
+    --sdpi-tab-selected-color: #333333;
+    --sdpi-tab-selected-top-offset: 0px;
+    --sdpi-tab-font-size: 9pt;
+    --sdpi-tab-container-left-offset: 5px;
+    --sdpi-tab-padding-horizontal: 12px;
+    --sdpi-tab-padding-vertical: 5px;
     height: 100%;
     width: 100%;
     overflow: hidden;
@@ -194,6 +188,7 @@ progress.full {
     overflow-x: auto;
     text-transform: capitalize;
     background-color: transparent;
+    margin-left: var(--sdpi-tab-container-left-offset);
 }
 
 .tabs::-webkit-scrollbar {
@@ -217,23 +212,29 @@ progress.full {
     margin-left: 100px;
     max-width: 234px;
     margin-bottom: 20px;
-    margin-top: -3px;
+    margin-top: -4px;
 }
 
 .tab {
     cursor: pointer;
-    padding: 6px 16px;
+    padding: var(--sdpi-tab-padding-vertical) var(--sdpi-tab-padding-horizontal);
     color: var(--sdpi-tab-color);
     font-size: var(--sdpi-tab-font-size);
     font-weight: var(--title-font-weight);
     background-color: rgba(0, 0, 0, 0.1);
-    margin: 1px;
+    margin: 0px;
+    margin-top: var(--sdpi-tab-top-offset);
+    margin-left: var(--sdpi-tab-left-margin);
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: 1px solid var(--sdpi-linecolor);
     -webkit-user-select: none;
     user-select: none;
+}
+
+.tab:first-child {
+  margin-left: 0px;
 }
 
 .tab-container {
@@ -253,8 +254,9 @@ progress.full {
 
 .tab.selected {
     color: white;
-    background-color: var(--sdpi-bgcolor);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.0);
+    background-color: var(--sdpi-tab-selected-color);
+    border-bottom: 2px solid var(--sdpi-tab-selected-color);
+    margin-top: var(--sdpi-tab-selected-top-offset);
 }
 
 .sdpi-item.tabgroup {
