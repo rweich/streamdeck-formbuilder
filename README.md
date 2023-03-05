@@ -13,7 +13,8 @@ yarn add @rweich/streamdeck-formbuilder
 
 ### Setup webpack
 
-The sdpi.css from the official [PISamples](https://github.com/elgatosf/streamdeck-pisamples) plugin are loaded by default.
+The styles (sdpi.css) from the official [SDK](https://github.com/elgatosf/streamdeck-javascript-sdk)
+(which are used in the [PISamples](https://github.com/elgatosf/streamdeck-pisamples) plugin), are loaded by default.
 
 When using webpack, it's necessary to:
 
