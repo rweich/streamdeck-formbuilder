@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://github.com/rweich/streamdeck-formbuilder/compare/v2.1.0...v2.1.1) (2023-07-10)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump actions/checkout from 3.3.0 to 3.4.0 ([268d59d](https://github.com/rweich/streamdeck-formbuilder/commit/268d59d61017b53d1b91fb9d420db1c0eca1d827))
+* **deps:** bump actions/checkout from 3.4.0 to 3.5.0 ([ba10e92](https://github.com/rweich/streamdeck-formbuilder/commit/ba10e92d2899bb2b54808487598d3629d513e870))
+* **deps:** bump actions/checkout from 3.5.0 to 3.5.2 ([6855d62](https://github.com/rweich/streamdeck-formbuilder/commit/6855d62b00b740f90e678375890243d6283709d4))
+* **deps:** bump actions/checkout from 3.5.2 to 3.5.3 ([8ecf386](https://github.com/rweich/streamdeck-formbuilder/commit/8ecf3863f2bebaa1dbb95e4b5de540173cbe04f1))
+* **deps:** bump actions/setup-node from 3.6.0 to 3.7.0 ([af8c4ee](https://github.com/rweich/streamdeck-formbuilder/commit/af8c4ee579470c47ff8e38476ac4c64c583bb7fc))
+* **deps:** bump codecov/codecov-action from 3.1.1 to 3.1.2 ([f95a9e7](https://github.com/rweich/streamdeck-formbuilder/commit/f95a9e7719fa0f56985a1d210b19c14c669a2065))
+* **deps:** bump codecov/codecov-action from 3.1.2 to 3.1.3 ([eee06ec](https://github.com/rweich/streamdeck-formbuilder/commit/eee06ec4da97cb21c6bca5b0b1ff31aa1b5de14c))
+* **deps:** bump codecov/codecov-action from 3.1.3 to 3.1.4 ([5c1e7f0](https://github.com/rweich/streamdeck-formbuilder/commit/5c1e7f0c58b1569fbe29866662f9c5e5f61c2770))
+* **deps:** bump cycjimmy/semantic-release-action from 3.2.0 to 3.3.0 ([90804e8](https://github.com/rweich/streamdeck-formbuilder/commit/90804e853c59f5c69bbeb836b9cbd09d72045701))
+* **deps:** bump cycjimmy/semantic-release-action from 3.3.0 to 3.4.0 ([361c19d](https://github.com/rweich/streamdeck-formbuilder/commit/361c19dddf36bfe8332152064fed57d95035bc2c))
+* **deps:** bump cycjimmy/semantic-release-action from 3.4.0 to 3.4.2 ([b6c0d08](https://github.com/rweich/streamdeck-formbuilder/commit/b6c0d089cef675360ae23564534c207ea4c58f2b))
+* **deps:** bump step-security/harden-runner from 2.2.0 to 2.2.1 ([fad5afb](https://github.com/rweich/streamdeck-formbuilder/commit/fad5afb9aa365254e4a077a529921af8e51a9763))
+* **deps:** bump step-security/harden-runner from 2.2.1 to 2.3.0 ([23dcb20](https://github.com/rweich/streamdeck-formbuilder/commit/23dcb2037b7b9273631c1b2be98bfa8e958b350e))
+* **deps:** bump step-security/harden-runner from 2.3.0 to 2.3.1 ([4aba70a](https://github.com/rweich/streamdeck-formbuilder/commit/4aba70a36767bfafcbe8e6430ba665d3e567524d))
+* **deps:** bump step-security/harden-runner from 2.3.1 to 2.4.0 ([565d1a0](https://github.com/rweich/streamdeck-formbuilder/commit/565d1a06250f6909225ce7ca0ecdb330aa33ee82))
+* **deps:** bump step-security/harden-runner from 2.4.0 to 2.4.1 ([b999c2e](https://github.com/rweich/streamdeck-formbuilder/commit/b999c2e79aba0faad7f396f822e1563d699f7a32))
+* **deps:** bump tj-actions/branch-names from 6.4 to 6.5 ([d46477c](https://github.com/rweich/streamdeck-formbuilder/commit/d46477ca587a6614912b8b10d4efbeb916b1b517))
+* **deps:** bump tough-cookie from 4.1.2 to 4.1.3 ([1c300a9](https://github.com/rweich/streamdeck-formbuilder/commit/1c300a952b9feec369da4b19b2773c51d8ff9e17))
+* **deps:** bump wagoid/commitlint-github-action from 5.3.1 to 5.4.1 ([13e3f8a](https://github.com/rweich/streamdeck-formbuilder/commit/13e3f8aa0b5d080a69557138e642f2a0b0b1c676))
+
 ## [2.1.0](https://github.com/rweich/streamdeck-formbuilder/compare/v2.0.8...v2.1.0) (2023-03-05)
 
 
