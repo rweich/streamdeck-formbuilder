@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.2](https://github.com/rweich/streamdeck-formbuilder/compare/v2.1.1...v2.1.2) (2023-07-29)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump semver from 5.7.1 to 5.7.2 ([966f5bc](https://github.com/rweich/streamdeck-formbuilder/commit/966f5bc16f3c3bbc82b499fab792bb72ac83c714))
+* **deps:** bump wagoid/commitlint-github-action from 5.4.1 to 5.4.3 ([ac68f30](https://github.com/rweich/streamdeck-formbuilder/commit/ac68f30bf50dd0b90be5c8ff129bf06b3f56f169))
+* **deps:** bump word-wrap from 1.2.3 to 1.2.4 ([cded8a3](https://github.com/rweich/streamdeck-formbuilder/commit/cded8a371ba1c0f6605924dc5433209f0aba80fd))
+
 ## [2.1.1](https://github.com/rweich/streamdeck-formbuilder/compare/v2.1.0...v2.1.1) (2023-07-10)
 
 
