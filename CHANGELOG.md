@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.3](https://github.com/rweich/streamdeck-formbuilder/compare/v2.1.2...v2.1.3) (2023-10-01)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump actions/checkout from 3.5.3 to 3.6.0 ([7370aea](https://github.com/rweich/streamdeck-formbuilder/commit/7370aeaf2ac29b7009436e2afe598dbac2a0dda9))
+* **deps:** bump actions/checkout from 3.6.0 to 4.0.0 ([f400f57](https://github.com/rweich/streamdeck-formbuilder/commit/f400f5766c5c4df5e3273c450e9068c29a5e081f))
+* **deps:** bump actions/checkout from 4.0.0 to 4.1.0 ([8d29650](https://github.com/rweich/streamdeck-formbuilder/commit/8d296505c2a434429307ece888c8ca0c38d95df5))
+* **deps:** bump actions/setup-node from 3.7.0 to 3.8.1 ([e60364b](https://github.com/rweich/streamdeck-formbuilder/commit/e60364be8d7a03ae2cdc0bb5d06c39a1315303fe))
+* **deps:** bump cycjimmy/semantic-release-action from 3.4.2 to 4.0.0 ([c6a8dff](https://github.com/rweich/streamdeck-formbuilder/commit/c6a8dff45611611bc30efe49194762667b7e27a1))
+* **deps:** bump get-func-name from 2.0.0 to 2.0.2 ([62287e9](https://github.com/rweich/streamdeck-formbuilder/commit/62287e9081959da284f6b41fb82df54414d8f7a7))
+* **deps:** bump step-security/harden-runner from 2.4.1 to 2.5.1 ([10a93f7](https://github.com/rweich/streamdeck-formbuilder/commit/10a93f7c0beedc96630d49f586c92cc5c9e01a92))
+
 ## [2.1.2](https://github.com/rweich/streamdeck-formbuilder/compare/v2.1.1...v2.1.2) (2023-07-29)
 
 
